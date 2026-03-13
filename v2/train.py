@@ -937,7 +937,7 @@ def main():
     model.fit(df)
 
     # Save in the v2 directory
-    save_path = os.path.join(script_dir, 'waste_predictor_v2_no_capacity.pkl')
+    save_path = os.path.join(script_dir, 'waste_predictor_v1.pkl')
     model.save(save_path)
 
     print("\n" + "=" * 70)
