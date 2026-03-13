@@ -1,0 +1,47 @@
+{
+  "dataset": "Puttalam Solar Salt Production - 2000-2026",
+  "samples": 648,
+  "output_columns": [
+    "Total_Waste_kg",
+    "Solid_Waste_Gypsum_kg",
+    "Solid_Waste_Limestone_kg",
+    "Solid_Waste_Industrial_Salt_kg",
+    "Total_Solid_Waste_kg",
+    "Liquid_Waste_Bittern_Liters",
+    "Bittern_Mg_Concentration_gL",
+    "Bittern_K_Concentration_gL",
+    "Bittern_SO4_Concentration_gL",
+    "Bittern_Ca_Concentration_gL",
+    "Bittern_Magnesium_kg",
+    "Bittern_Potassium_kg",
+    "Bittern_Sulfate_kg",
+    "Bittern_Calcium_kg"
+  ],
+  "feature_names": [],
+  "model_weights": {
+    "gradient_boosting": 0.3310812606197912,
+    "stacked": 0.33773915902905394,
+    "neural_network": 0.33117958035115486
+  },
+  "test_metrics": {
+    "r2": 0.87425884565001,
+    "mae": 20982.83648029534,
+    "rmse": 100655.85160893231
+  },
+  "per_target_r2": {
+    "Total_Waste_kg": 0.9857960786667526,
+    "Solid_Waste_Gypsum_kg": 0.9910347816313312,
+    "Solid_Waste_Limestone_kg": 0.9891495097133053,
+    "Solid_Waste_Industrial_Salt_kg": 0.9793827703281587,
+    "Total_Solid_Waste_kg": 0.9966981069712352,
+    "Liquid_Waste_Bittern_Liters": 0.9800845703577199,
+    "Bittern_Mg_Concentration_gL": 0.7061755748246383,
+    "Bittern_K_Concentration_gL": 0.694110773632433,
+    "Bittern_SO4_Concentration_gL": 0.7307230183435193,
+    "Bittern_Ca_Concentration_gL": 0.6560159517379227,
+    "Bittern_Magnesium_kg": 0.8792137311877308,
+    "Bittern_Potassium_kg": 0.8805507170042364,
+    "Bittern_Sulfate_kg": 0.8876119156074282,
+    "Bittern_Calcium_kg": 0.8830763390937292
+  }
+}

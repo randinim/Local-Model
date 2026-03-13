@@ -101,12 +101,6 @@ class AdvancedFeatureEngineer:
         f['log_production'] = np.log1p(df['production_volume'])
         f['production_sq'] = df['production_volume'] ** 2 / 1e10
         f['production_sqrt'] = np.sqrt(df['production_volume'])
-        f['production_capacity'] = df['production_capacity']
-        
-        # Capacity utilization ratio
-        f['capacity_utilization'] = df['production_volume'] / (df['production_capacity'] + 1)
-        f['capacity_gap'] = df['production_capacity'] - df['production_volume']
-        f['log_capacity'] = np.log1p(df['production_capacity'])
 
         # === Weather Features ===
         f['rain_sum'] = df['rain_sum']
@@ -188,10 +182,6 @@ class AdvancedFeatureEngineer:
         f['prod_x_wind'] = df['production_volume'] * df['wind_speed_mean'] / (scale_factor / 10)
         f['prod_x_wet'] = df['production_volume'] * f['wet_index'] / scale_factor
         f['prod_x_dry'] = df['production_volume'] * f['dry_index'] / scale_factor
-        
-        # Capacity-weather interactions
-        f['capacity_x_evap'] = df['production_capacity'] * f['evap_efficiency'] / scale_factor
-        f['capacity_x_rain'] = df['production_capacity'] * df['rain_sum'] / (scale_factor * 2)
 
         # === Weather Interaction Terms ===
         f['temp_x_wind'] = df['temperature_mean'] * df['wind_speed_mean'] / 100
@@ -933,7 +923,9 @@ class ProductionWastePredictor:
 
 def main():
     """Main training script"""
-    data_path = os.path.join('data', 'full_dataset.csv')
+    # Get script directory and construct path to data
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    data_path = os.path.join(script_dir, 'data', 'full_dataset.csv')
     df = pd.read_csv(data_path, comment='#')
 
     print(f"Loaded {len(df)} samples")
@@ -944,8 +936,9 @@ def main():
     model = ProductionWastePredictor()
     model.fit(df)
 
-    # Save
-    model.save('waste_predictor_v1.pkl')
+    # Save in the v2 directory
+    save_path = os.path.join(script_dir, 'waste_predictor_v2_no_capacity.pkl')
+    model.save(save_path)
 
     print("\n" + "=" * 70)
     print("TRAINING COMPLETE")
