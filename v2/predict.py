@@ -82,7 +82,7 @@ class WastePredictor:
             # Default to same directory as this script
             model_path = os.path.join(
                 os.path.dirname(os.path.abspath(__file__)),
-                'puttalam_waste_predictor_v2.pkl'
+                'waste_predictor_v2.pkl'
             )
 
         with open(model_path, 'rb') as f:

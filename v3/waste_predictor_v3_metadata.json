@@ -1,0 +1,26 @@
+{
+  "method": "multioutput-gb-simplified",
+  "role": "early_model",
+  "parent_model": "v2",
+  "metrics": {
+    "r2": 0.9825702243881536,
+    "mae": 6771.467186534245,
+    "rmse": 29825.198005224196,
+    "r2_per_target": {
+      "Total_Waste_kg": 0.9986156772897303,
+      "Solid_Waste_Gypsum_kg": 0.9990076668047524,
+      "Solid_Waste_Limestone_kg": 0.998996346090567,
+      "Solid_Waste_Industrial_Salt_kg": 0.9985261922150022,
+      "Total_Solid_Waste_kg": 0.9998388840569243,
+      "Liquid_Waste_Bittern_Liters": 0.9972984954057454,
+      "Bittern_Mg_Concentration_gL": 0.9558110133783629,
+      "Bittern_K_Concentration_gL": 0.9540068060459731,
+      "Bittern_SO4_Concentration_gL": 0.9564025585830077,
+      "Bittern_Ca_Concentration_gL": 0.9537724320876713,
+      "Bittern_Magnesium_kg": 0.9859310103344815,
+      "Bittern_Potassium_kg": 0.9867582686795309,
+      "Bittern_Sulfate_kg": 0.9864748611042439,
+      "Bittern_Calcium_kg": 0.9845429293581602
+    }
+  }
+}

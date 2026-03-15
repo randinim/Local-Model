@@ -1,0 +1,47 @@
+{
+  "v2": {
+    "r2": 0.8729969738803265,
+    "mae": 21825.12912666139,
+    "rmse": 105684.36943348596,
+    "r2_per_target": {
+      "Total_Waste_kg": 0.9886849544285466,
+      "Solid_Waste_Gypsum_kg": 0.9929270147414371,
+      "Solid_Waste_Limestone_kg": 0.9919091000356403,
+      "Solid_Waste_Industrial_Salt_kg": 0.9794568879515151,
+      "Total_Solid_Waste_kg": 0.996187546608607,
+      "Liquid_Waste_Bittern_Liters": 0.9780378052509877,
+      "Bittern_Mg_Concentration_gL": 0.7146828561675611,
+      "Bittern_K_Concentration_gL": 0.6891173118989309,
+      "Bittern_SO4_Concentration_gL": 0.7281477750684666,
+      "Bittern_Ca_Concentration_gL": 0.6526854587204538,
+      "Bittern_Magnesium_kg": 0.8783493643357325,
+      "Bittern_Potassium_kg": 0.8738273991086736,
+      "Bittern_Sulfate_kg": 0.8825629878682317,
+      "Bittern_Calcium_kg": 0.875381172139787
+    }
+  },
+  "v3": {
+    "r2": -2.6758974320954176,
+    "mae": 424773.75384330825,
+    "rmse": 1617830.906578229,
+    "r2_per_target": {
+      "Total_Waste_kg": -6.017323300821346,
+      "Solid_Waste_Gypsum_kg": -3.5723541158771566,
+      "Solid_Waste_Limestone_kg": -3.6121181619458476,
+      "Solid_Waste_Industrial_Salt_kg": -5.863766375075044,
+      "Total_Solid_Waste_kg": -5.809878867959284,
+      "Liquid_Waste_Bittern_Liters": -4.1580477830549825,
+      "Bittern_Mg_Concentration_gL": -0.11455520107768424,
+      "Bittern_K_Concentration_gL": -0.01677092394779489,
+      "Bittern_SO4_Concentration_gL": -0.16526270320076852,
+      "Bittern_Ca_Concentration_gL": -0.02690200289123923,
+      "Bittern_Magnesium_kg": -2.013737493156028,
+      "Bittern_Potassium_kg": -2.0302979800334144,
+      "Bittern_Sulfate_kg": -2.0728499461791796,
+      "Bittern_Calcium_kg": -1.9886991941160628
+    }
+  },
+  "v4": {
+    "error": "Could not construct predictor for v4 from D:\\Research\\local-module\\v4\\waste_predictor_v4.pkl"
+  }
+}

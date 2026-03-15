@@ -1,0 +1,15 @@
+v4 model per-target R²
+Bittern_SO4_Concentration_gL: -19.3798
+Bittern_Ca_Concentration_gL: -15.7914
+Bittern_K_Concentration_gL: -14.0629
+Solid_Waste_Industrial_Salt_kg: -5.2948
+Bittern_Mg_Concentration_gL: -3.9483
+Total_Waste_kg: -1.8341
+Liquid_Waste_Bittern_Liters: 0.0031
+Solid_Waste_Gypsum_kg: 0.1447
+Bittern_Calcium_kg: 0.1505
+Bittern_Potassium_kg: 0.2412
+Solid_Waste_Limestone_kg: 0.2491
+Bittern_Sulfate_kg: 0.3551
+Bittern_Magnesium_kg: 0.6082
+Total_Solid_Waste_kg: 0.8521
