@@ -925,7 +925,27 @@ def main():
     """Main training script"""
     # Get script directory and construct path to data
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    data_path = os.path.join(script_dir, 'data', 'full_dataset.csv')
+    # Prefer an explicit project-level dataset if available
+    # 1) v2/data/full_dataset.csv (legacy)
+    # 2) ../data/training.csv (workspace-level dataset provided by user)
+    candidates = [
+        os.path.join(script_dir, 'data', 'full_dataset.csv'),
+        os.path.join(script_dir, '..', 'data', 'training.csv')
+    ]
+
+    data_path = None
+    for c in candidates:
+        c_abs = os.path.abspath(c)
+        if os.path.exists(c_abs):
+            data_path = c_abs
+            break
+
+    if data_path is None:
+        raise FileNotFoundError(
+            'No dataset found. Checked: ' + ', '.join([os.path.abspath(p) for p in candidates])
+        )
+
+    print(f"Loading dataset from: {data_path}")
     df = pd.read_csv(data_path, comment='#')
 
     print(f"Loaded {len(df)} samples")

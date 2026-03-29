@@ -29,6 +29,7 @@ from typing import Dict
 
 # Import classes needed for pickle deserialization
 import sys
+
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from train import (
@@ -37,7 +38,7 @@ from train import (
     StackedEnsembleModel,
     NeuralNetworkTrainer,
     ProductionWastePredictor,
-    DeepNeuralNetworkModel
+    DeepNeuralNetworkModel,
 )
 
 
@@ -60,20 +61,20 @@ class WastePredictor:
     """
 
     OUTPUT_COLS = [
-        'Total_Waste_kg',
-        'Solid_Waste_Gypsum_kg',
-        'Solid_Waste_Limestone_kg',
-        'Solid_Waste_Industrial_Salt_kg',
-        'Total_Solid_Waste_kg',
-        'Liquid_Waste_Bittern_Liters',
-        'Bittern_Mg_Concentration_gL',
-        'Bittern_K_Concentration_gL',
-        'Bittern_SO4_Concentration_gL',
-        'Bittern_Ca_Concentration_gL',
-        'Bittern_Magnesium_kg',
-        'Bittern_Potassium_kg',
-        'Bittern_Sulfate_kg',
-        'Bittern_Calcium_kg'
+        "Total_Waste_kg",
+        "Solid_Waste_Gypsum_kg",
+        "Solid_Waste_Limestone_kg",
+        "Solid_Waste_Industrial_Salt_kg",
+        "Total_Solid_Waste_kg",
+        "Liquid_Waste_Bittern_Liters",
+        "Bittern_Mg_Concentration_gL",
+        "Bittern_K_Concentration_gL",
+        "Bittern_SO4_Concentration_gL",
+        "Bittern_Ca_Concentration_gL",
+        "Bittern_Magnesium_kg",
+        "Bittern_Potassium_kg",
+        "Bittern_Sulfate_kg",
+        "Bittern_Calcium_kg",
     ]
 
     def __init__(self, model_path: str = None):
@@ -81,16 +82,15 @@ class WastePredictor:
         if model_path is None:
             # Default to same directory as this script
             model_path = os.path.join(
-                os.path.dirname(os.path.abspath(__file__)),
-                'waste_predictor_v2.pkl'
+                os.path.dirname(os.path.abspath(__file__)), "waste_predictor_v2.pkl"
             )
 
-        with open(model_path, 'rb') as f:
+        with open(model_path, "rb") as f:
             data = pickle.load(f)
 
-        self.models = data['models']
-        self.weights = data['weights']
-        self.feature_names = data['feature_names']
+        self.models = data["models"]
+        self.weights = data["weights"]
+        self.feature_names = data["feature_names"]
 
     def predict(
         self,
@@ -101,7 +101,7 @@ class WastePredictor:
         humidity_mean: float,
         wind_speed_mean: float,
         month: int = 6,
-        year: int = 2024
+        year: int = 2024,
     ) -> Dict[str, float]:
         """
         Predict waste compositions and ion concentrations.
@@ -124,16 +124,20 @@ class WastePredictor:
                 - Ion masses (kg)
         """
         # Create input dataframe
-        input_df = pd.DataFrame([{
-            'production_volume': production_volume,
-            'production_capacity': production_capacity,
-            'rain_sum': rain_sum,
-            'temperature_mean': temperature_mean,
-            'humidity_mean': humidity_mean,
-            'wind_speed_mean': wind_speed_mean,
-            'Month': month,
-            'Year': year
-        }])
+        input_df = pd.DataFrame(
+            [
+                {
+                    "production_volume": production_volume,
+                    "production_capacity": production_capacity,
+                    "rain_sum": rain_sum,
+                    "temperature_mean": temperature_mean,
+                    "humidity_mean": humidity_mean,
+                    "wind_speed_mean": wind_speed_mean,
+                    "Month": month,
+                    "Year": year,
+                }
+            ]
+        )
 
         # Make predictions using ensemble
         predictions = []
@@ -164,7 +168,7 @@ def predict_waste(
     humidity_mean: float,
     wind_speed_mean: float,
     month: int = 6,
-    year: int = 2024
+    year: int = 2024,
 ) -> Dict[str, float]:
     """
     Quick prediction function (loads model on each call).
@@ -205,53 +209,60 @@ def predict_waste(
         humidity_mean=humidity_mean,
         wind_speed_mean=wind_speed_mean,
         month=month,
-        year=year
+        year=year,
     )
 
+if __name__ == "__main__":
+    import csv
 
-if __name__ == '__main__':
-    # Example usage
-    print("=" * 70)
-    print("PUTTALAM WASTE PREDICTION - EXAMPLE")
-    print("=" * 70)
+    # Define 10 high-value stress scenarios for Puttalam
+    stress_scenarios = [
+        {"name": "1. Peak Yala Dry (Aug)", "prod": 1800000, "rain": 5, "temp": 33.0, "hum": 60, "wind": 24, "month": 8},
+        {"name": "2. Peak Maha Monsoon (Nov)", "prod": 200000, "rain": 550, "temp": 25.5, "hum": 96, "wind": 8, "month": 11},
+        {"name": "3. Inter-Monsoon Heat (Mar)", "prod": 1200000, "rain": 120, "temp": 31.0, "hum": 75, "wind": 14, "month": 3},
+        {"name": "4. Over-Capacity Run (110%)", "prod": 2200000, "rain": 40, "temp": 30.0, "hum": 70, "wind": 18, "month": 9},
+        {"name": "5. Minimum Viable Batch", "prod": 50000, "rain": 20, "temp": 29.5, "hum": 68, "wind": 20, "month": 2},
+        {"name": "6. Cyclone/Depression Event", "prod": 300000, "rain": 300, "temp": 24.0, "hum": 98, "wind": 45, "month": 12},
+        {"name": "7. Extreme Heatwave", "prod": 1500000, "rain": 0, "temp": 38.0, "hum": 40, "wind": 12, "month": 5},
+        {"name": "8. High Humidity/Low Wind", "prod": 900000, "rain": 50, "temp": 28.0, "hum": 92, "wind": 2, "month": 10},
+        {"name": "9. Poor Quality Crude Run", "prod": 1400000, "rain": 180, "temp": 27.5, "hum": 85, "wind": 10, "month": 6},
+        {"name": "10. High Purity Industrial Run", "prod": 1600000, "rain": 10, "temp": 32.0, "hum": 55, "wind": 28, "month": 7}
+    ]
 
-    # Test prediction with typical values
-    sample = {
-        'production_volume': 1500000,
-        'production_capacity': 2000000,
-        'rain_sum': 250,
-        'temperature_mean': 28.5,
-        'humidity_mean': 90,
-        'wind_speed_mean': 18,
-        'month': 7,
-        'year': 2024
-    }
+    all_results = []
+    
+    print("=" * 75)
+    print(f"{'SCENARIO NAME':<35} | {'BITTERN (L)':<15} | {'SALT WASTE (kg)':<15}")
+    print("-" * 75)
 
-    print("\nInput:")
-    for k, v in sample.items():
-        print(f"  {k}: {v}")
+    for s in stress_scenarios:
+        # Run prediction
+        res = predict_waste(
+            production_volume=s['prod'],
+            production_capacity=2000000,
+            rain_sum=s['rain'],
+            temperature_mean=s['temp'],
+            humidity_mean=s['hum'],
+            wind_speed_mean=s['wind'],
+            month=s['month'],
+            year=2024
+        )
+        
+        # Log to console
+        print(f"{s['name']:<35} | {res['Liquid_Waste_Bittern_Liters']:15,.2f} | {res['Solid_Waste_Industrial_Salt_kg']:15,.2f}")
+        
+        # Prepare for CSV export
+        export_row = {"Scenario": s['name'], **s} # Include inputs
+        export_row.update(res) # Include outputs
+        all_results.append(export_row)
 
-    result = predict_waste(**sample)
+    # Export to CSV for Excel
+    keys = all_results[0].keys()
+    with open('Puttalam_10_Scenario_Validation.csv', 'w', newline='') as f:
+        dict_writer = csv.DictWriter(f, fieldnames=keys)
+        dict_writer.writeheader()
+        dict_writer.writerows(all_results)
 
-    print("\nPredictions:")
-    print("\nSolid Waste Components:")
-    solid_waste_keys = [k for k in result.keys() if 'Solid' in k or k == 'Total_Waste_kg']
-    for k in solid_waste_keys:
-        print(f"  {k:40s}: {result[k]:>12,.2f} kg")
-
-    print("\nBittern Liquid Waste:")
-    print(f"  {'Liquid_Waste_Bittern_Liters':40s}: {result['Liquid_Waste_Bittern_Liters']:>12,.2f} L")
-
-    print("\nIon Concentrations:")
-    conc_keys = [k for k in result.keys() if 'Concentration' in k]
-    for k in conc_keys:
-        ion = k.replace('Bittern_', '').replace('_Concentration_gL', '')
-        print(f"  {ion:40s}: {result[k]:>12,.3f} g/L")
-
-    print("\nIon Masses:")
-    mass_keys = [k for k in result.keys() if k.startswith('Bittern_') and k.endswith('_kg')]
-    for k in mass_keys:
-        ion = k.replace('Bittern_', '').replace('_kg', '')
-        print(f"  {ion:40s}: {result[k]:>12,.2f} kg")
-
-    print("\n" + "=" * 70)
+    print("-" * 75)
+    print("\n[SUCCESS] Stress test complete. Results exported to: Puttalam_10_Scenario_Validation.csv")
+    print("=" * 75)

@@ -19,29 +19,29 @@
   ],
   "feature_names": [],
   "model_weights": {
-    "gradient_boosting": 0.3313466082714343,
-    "stacked": 0.3380160736562681,
-    "neural_network": 0.33063731807229757
+    "gradient_boosting": 0.3313612697018554,
+    "stacked": 0.3352024042894105,
+    "neural_network": 0.333436326008734
   },
   "test_metrics": {
-    "r2": 0.8743957574770584,
-    "mae": 21131.768772873074,
-    "rmse": 103196.45165329371
+    "r2": 0.9580260397390324,
+    "mae": 3907.79780377817,
+    "rmse": 18904.770089457037
   },
   "per_target_r2": {
-    "Total_Waste_kg": 0.9863704157286366,
-    "Solid_Waste_Gypsum_kg": 0.9912462574487716,
-    "Solid_Waste_Limestone_kg": 0.9920891371479168,
-    "Solid_Waste_Industrial_Salt_kg": 0.9756538909013319,
-    "Total_Solid_Waste_kg": 0.9943878389169261,
-    "Liquid_Waste_Bittern_Liters": 0.9790628667282056,
-    "Bittern_Mg_Concentration_gL": 0.7122886769066381,
-    "Bittern_K_Concentration_gL": 0.6875291799505631,
-    "Bittern_SO4_Concentration_gL": 0.7343074423452816,
-    "Bittern_Ca_Concentration_gL": 0.6580214325847535,
-    "Bittern_Magnesium_kg": 0.8791604753373714,
-    "Bittern_Potassium_kg": 0.8790538230815708,
-    "Bittern_Sulfate_kg": 0.8883482106842203,
-    "Bittern_Calcium_kg": 0.884020956916629
+    "Total_Waste_kg": 0.998322160504084,
+    "Solid_Waste_Gypsum_kg": 0.6883581591778469,
+    "Solid_Waste_Limestone_kg": 0.7527132692866471,
+    "Solid_Waste_Industrial_Salt_kg": 0.9975852318930071,
+    "Total_Solid_Waste_kg": 0.998322160504084,
+    "Liquid_Waste_Bittern_Liters": 0.9972984153005124,
+    "Bittern_Mg_Concentration_gL": 0.9986266939715784,
+    "Bittern_K_Concentration_gL": 0.9975023037310349,
+    "Bittern_SO4_Concentration_gL": 0.9968013619737056,
+    "Bittern_Ca_Concentration_gL": 0.9950212274908123,
+    "Bittern_Magnesium_kg": 0.9984210462395122,
+    "Bittern_Potassium_kg": 0.9983679311395639,
+    "Bittern_Sulfate_kg": 0.9983898189735062,
+    "Bittern_Calcium_kg": 0.9966347761605593
   }
 }
